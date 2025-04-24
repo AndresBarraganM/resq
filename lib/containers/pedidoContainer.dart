@@ -16,7 +16,7 @@ Widget pedidoContainer({
       borderRadius: BorderRadius.circular(8.0),
     ),
     child: Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Logo a la izquierda
         Container(
@@ -67,7 +67,7 @@ Widget pedidoContainer({
                 SizedBox(height: 8),
                 // Fecha de finalización
                 Text(
-                  'Finaliza: ${fechaFinalizacion.toString().substring(0, 10)}',
+                  'Finaliza: ${fechaFinalizacion.toString().substring(0, 16)}',
                   style: TextStyle(color: Colors.grey[600], fontSize: 12),
                 ),
                 SizedBox(height: 12),

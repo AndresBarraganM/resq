@@ -9,7 +9,7 @@ class MyProfile extends StatefulWidget {
 }
 
 class _MyProfileState extends State<MyProfile> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -38,7 +38,7 @@ class _MyProfileState extends State<MyProfile> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Mi perfil',
+          'Mi carrito',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -83,10 +83,12 @@ class _MyProfileState extends State<MyProfile> {
   }
 
   Widget _listaPedidos() {
-    return Column(
-      children: [
-        for (int i = 0; i < 3; i++) // Ejemplo con 5 pedidos, puedes cambiar esto
-          pedidoContainer(
+  return ListView.builder(
+    shrinkWrap: true,
+    physics: NeverScrollableScrollPhysics(), // ya estás en un scroll externo
+    itemCount: 6,
+    itemBuilder: (context, i) {
+      return pedidoContainer(
             nombreTienda: "nombreTienda", 
             costo: 40, 
             descripcionProducto: "descripcionProducto", 
@@ -97,11 +99,10 @@ class _MyProfileState extends State<MyProfile> {
             onCancelar: () {
               print('Cancelar presionado');
             },
-            )
-      ],
-    );
+            );
+    },
+  );
   }
-  
 
   TextStyle estiloOptionsList(){
     return const TextStyle(
