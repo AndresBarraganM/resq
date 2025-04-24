@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import '../containers/pedidoContainer.dart';
 
-class MyCarrito extends StatefulWidget {
-  const MyCarrito({super.key});
+class MyStores extends StatefulWidget {
+  const MyStores({super.key});
 
   @override
-  State<MyCarrito> createState() => _MyCarritoState();
+  State<MyStores> createState() => _MyStoreState();
 }
 
-class _MyCarritoState extends State<MyCarrito> {
-  int _selectedIndex = 1;
+class _MyStoreState extends State<MyStores> {
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -38,7 +37,7 @@ class _MyCarritoState extends State<MyCarrito> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Mi carrito',
+          'Tiendas disponibles',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -48,13 +47,11 @@ class _MyCarritoState extends State<MyCarrito> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _listaPedidos()
-          ],
-        ),
-    ),
+      body: Column(
+        children: [
+          Text("Sin implementar")
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -77,40 +74,8 @@ class _MyCarritoState extends State<MyCarrito> {
             icon: Icon(Icons.person),
             label: 'Perfil',
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _listaPedidos() {
-  return ListView.builder(
-    shrinkWrap: true,
-    physics: NeverScrollableScrollPhysics(), // ya estás en un scroll externo
-    itemCount: 6,
-    itemBuilder: (context, i) {
-      return pedidoContainer(
-            nombreTienda: "nombreTienda", 
-            costo: 40, 
-            descripcionProducto: "descripcionProducto", 
-            fechaFinalizacion: DateTime.now().add(Duration(days: 1)), 
-            onAportar: () {
-              print('Aportar presionado');
-            },
-            onCancelar: () {
-              print('Cancelar presionado');
-            },
-            );
-    },
-  );
-  }
-
-  TextStyle estiloOptionsList(){
-    return const TextStyle(
-      fontSize: 20,
-      //fontFamily: 'Inria Serif',
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
+        ]
+      )
     );
   }
 }
-

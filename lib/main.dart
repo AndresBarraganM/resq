@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'pages/MyProfile.dart';
-
+import 'pages/MyCarrito.dart';
+import 'pages/MyStores.dart';
+import 'pages/MyInfo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +34,13 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      initialRoute: "/profile" ,
+      routes: {
+        '/profile':(context)=> MyProfile(),
+        '/orders':(context)=> MyCarrito(),
+        '/notifications':(context)=> MyInfo(),
+        '/home': (context)=> MyStores()
+      },
       home: const MyProfile(),
     );
   }
