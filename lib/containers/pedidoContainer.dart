@@ -1,0 +1,118 @@
+import 'package:flutter/material.dart';
+
+Widget pedidoContainer({
+  required String nombreTienda,
+  required double costo,
+  required String descripcionProducto,
+  required DateTime fechaFinalizacion,
+  required VoidCallback onAportar,
+  required VoidCallback onCancelar,
+  IconData icono = Icons.store,
+}) {
+  return Container(
+    margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.grey),
+      borderRadius: BorderRadius.circular(8.0),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // Logo a la izquierda
+        Container(
+          width: 80,
+          decoration: BoxDecoration(
+            color: Colors.grey[300],
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(8.0),
+              bottomLeft: Radius.circular(8.0),
+            ),
+          ),
+          child: Icon(icono, size: 40, color: Colors.grey[600]),
+        ),
+        // Contenido principal
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Fila superior con nombre de tienda y costo
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      nombreTienda,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      '\$${costo.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8),
+                // Descripción del producto
+                Text(
+                  descripcionProducto,
+                  style: TextStyle(color: Colors.grey[600]),
+                ),
+                SizedBox(height: 8),
+                // Fecha de finalización
+                Text(
+                  'Finaliza: ${fechaFinalizacion.toString().substring(0, 10)}',
+                  style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                ),
+                SizedBox(height: 12),
+                // Botones
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    ElevatedButton(
+                      onPressed: onAportar,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                      ),
+                      child: Text('Aportar'),
+                    ),
+                    SizedBox(width: 8),
+                    ElevatedButton(
+                      onPressed: onCancelar,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      child: Text('Cancelar'),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+/*
+ejemplo de uso:
+pedidoContainer(
+  nombreTienda: 'Tienda 1',
+  costo: 20.0,
+  descripcionProducto: 'Producto 1: Descripción breve del producto solicitado',
+  fechaFinalizacion: DateTime.now().add(Duration(days: 1)),
+  onAportar: () {
+    print('Aportar presionado');
+  },
+  onCancelar: () {
+    print('Cancelar presionado');
+  },
+)
+*/

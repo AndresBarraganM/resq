@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../containers/pedidoContainer.dart';
 
 class MyProfile extends StatefulWidget {
   const MyProfile({super.key});
@@ -47,11 +48,13 @@ class _MyProfileState extends State<MyProfile> {
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: Column(
-        children: [
-          _listaPedidos()
-        ],
-      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _listaPedidos()
+          ],
+        ),
+    ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -83,96 +86,18 @@ class _MyProfileState extends State<MyProfile> {
     return Column(
       children: [
         for (int i = 0; i < 3; i++) // Ejemplo con 5 pedidos, puedes cambiar esto
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Logo a la izquierda
-                Container(
-                  width: 80,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8.0),
-                      bottomLeft: Radius.circular(8.0),
-                    ),
-                  ),
-                  child: Icon(Icons.store, size: 40, color: Colors.grey[600]),
-                ),
-                // Contenido principal
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        // Fila superior con nombre de tienda y costo
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Tienda ${i + 1}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            Text(
-                              '\$${(i + 1) * 10}.00',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.green,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 8),
-                        // Descripción del producto
-                        Text(
-                          'Producto ${i + 1}: Descripción breve del producto solicitado',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                        SizedBox(height: 8),
-                        // Fecha de finalización
-                        Text(
-                          'Finaliza: ${DateTime.now().add(Duration(days: i + 1)).toString().substring(0, 10)}',
-                          style: TextStyle(color: Colors.grey[600], fontSize: 12),
-                        ),
-                        SizedBox(height: 12),
-                        // Botones
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor : Colors.grey,
-                              ),
-                              child: Text('Aportar'),
-                            ),
-                            SizedBox(width: 8),
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor : Colors.red,
-                              ),
-                              child: Text('Cancelar'),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          pedidoContainer(
+            nombreTienda: "nombreTienda", 
+            costo: 40, 
+            descripcionProducto: "descripcionProducto", 
+            fechaFinalizacion: DateTime.now().add(Duration(days: 1)), 
+            onAportar: () {
+              print('Aportar presionado');
+            },
+            onCancelar: () {
+              print('Cancelar presionado');
+            },
+            )
       ],
     );
   }
