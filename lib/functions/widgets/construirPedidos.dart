@@ -9,6 +9,7 @@ List<Widget> construirPedidos(List<Pedido> pedidos) {
       costo: pedido.costo,
       descripcionProducto: pedido.descripcionProducto,
       fechaFinalizacion: pedido.fechaFinalizacion,
+      imagen: pedido.imagen,
       onAportar: () {
         print('Aportar presionado para ${pedido.nombreTienda}');
       },

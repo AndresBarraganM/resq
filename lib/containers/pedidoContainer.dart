@@ -7,7 +7,7 @@ Widget pedidoContainer({
   required DateTime fechaFinalizacion,
   required VoidCallback onAportar,
   required VoidCallback onCancelar,
-  IconData icono = Icons.store,
+  required String imagen,
 }) {
   return Container(
     margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -28,7 +28,10 @@ Widget pedidoContainer({
               bottomLeft: Radius.circular(8.0),
             ),
           ),
-          child: Icon(icono, size: 40, color: Colors.grey[600]),
+          child: Image.asset(
+            'assets/images/companies/${imagen}', 
+            fit: BoxFit.contain,
+          ),
         ),
         // Contenido principal
         Expanded(
