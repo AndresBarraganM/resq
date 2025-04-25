@@ -117,7 +117,7 @@ final List<Pedido> listaPedidos = [
     costo: 70,
     descripcionProducto: "hamburgesas restantes",
     fechaFinalizacion: DateTime.now().add(Duration(hours: 7)),
-    imagen: 'sanborns.png'
+    imagen: 'carlsjr.png'
   ),
   Pedido(
     nombreTienda: "soriana",
