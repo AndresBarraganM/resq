@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../containers/pedidoContainer.dart';
+import '../functions/widgets/construirPedidos.dart';
+import '../models/pedido.dart';
 
 class MyCarrito extends StatefulWidget {
   const MyCarrito({super.key});
@@ -83,26 +84,14 @@ class _MyCarritoState extends State<MyCarrito> {
   }
 
   Widget _listaPedidos() {
-  return ListView.builder(
+  return ListView(
     shrinkWrap: true,
-    physics: NeverScrollableScrollPhysics(), // ya estás en un scroll externo
-    itemCount: 6,
-    itemBuilder: (context, i) {
-      return pedidoContainer(
-            nombreTienda: "nombreTienda", 
-            costo: 40, 
-            descripcionProducto: "descripcionProducto", 
-            fechaFinalizacion: DateTime.now().add(Duration(days: 1)), 
-            onAportar: () {
-              print('Aportar presionado');
-            },
-            onCancelar: () {
-              print('Cancelar presionado');
-            },
-            );
-    },
+    physics: NeverScrollableScrollPhysics(),
+    children: construirPedidos(listaPedidos),
   );
   }
+
+
 
   TextStyle estiloOptionsList(){
     return const TextStyle(
@@ -113,4 +102,29 @@ class _MyCarritoState extends State<MyCarrito> {
     );
   }
 }
+
+
+final List<Pedido> listaPedidos = [
+  Pedido(
+    nombreTienda: "Sanborns",
+    costo: 40,
+    descripcionProducto: "Producto de panaderia",
+    fechaFinalizacion: DateTime.now().add(Duration(hours: 7)),
+    imagen: 'sanborns.png'
+  ),
+  Pedido(
+    nombreTienda: "Carlsjr reforma",
+    costo: 70,
+    descripcionProducto: "hamburgesas restantes",
+    fechaFinalizacion: DateTime.now().add(Duration(hours: 7)),
+    imagen: 'sanborns.png'
+  ),
+  Pedido(
+    nombreTienda: "soriana",
+    costo: 60,
+    descripcionProducto: "Carne de res",
+    fechaFinalizacion: DateTime.now().add(Duration(hours: 7)),
+    imagen: 'soriana.jpeg'
+  )
+];
 
