@@ -59,7 +59,10 @@ flutter:
 
   assets:
    - assets/images/userProfile.jpg
-   - assets/images/companies/
+   - assets/images/companies/carlsjr.png
+   - assets/images/companies/default_image.jpg
+   - assets/images/companies/sanborns.png
+   - assets/images/companies/soriana.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

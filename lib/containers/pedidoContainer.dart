@@ -20,7 +20,8 @@ Widget pedidoContainer({
       children: [
         // Logo a la izquierda
         Container(
-          width: 80,
+          width: 120,
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             color: Colors.grey[300],
             borderRadius: BorderRadius.only(
@@ -29,7 +30,7 @@ Widget pedidoContainer({
             ),
           ),
           child: Image.asset(
-            'assets/images/companies/${imagen}', 
+            'assets/images/companies/$imagen', 
             fit: BoxFit.contain,
           ),
         ),
