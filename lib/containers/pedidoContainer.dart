@@ -17,21 +17,30 @@ Widget pedidoContainer({
     ),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         // Logo a la izquierda
-        Container(
-          width: 120,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8.0),
-              bottomLeft: Radius.circular(8.0),
+        SizedBox(
+          height: 158,
+          child: Container(
+            width: 120,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.0),
+                bottomLeft: Radius.circular(8.0),
+              ),
             ),
-          ),
-          child: Image.asset(
-            'assets/images/companies/$imagen', 
-            fit: BoxFit.contain,
+            child:Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/companies/$imagen',
+                  fit: BoxFit.contain,
+                ),
+              ],
+            ),
           ),
         ),
         // Contenido principal
